@@ -17,71 +17,53 @@ const Sidebar = () => {
 	}
 	const menus = [
 		{
-			title: "공모 방법",
-			url: "/howTo",
+			title: "대시보드 유형 1",
 			key: "sub1",
 			submenu: [
 				{
-					title: "option1",
-					url: "/url1"
+					title: "작은 유형 1",
 				},
 				{
-					title: "option2",
-					url: "/url2"
+					title: "큰 유형 1",
 				},
 				{
-					title: "option3",
-					url: "/url3"
-				},
-				{
-					title: "option4",
-					url: "/url4"
+					title: "긴 유형 1",
 				}
 			]
 		},
 		{
-			title: "전체 공모주 확인",
-			url: "/allPublicOffering",
+			title: "대시보드 유형 2",
 			key: "sub2",
 			submenu: [
 				{
 					title: "option1",
-					url: "/url1"
 				},
 				{
 					title: "option2",
-					url: "/url2"
 				},
 				{
 					title: "option3",
-					url: "/url3"
 				},
 				{
 					title: "option4",
-					url: "/url4"
 				}
 			]
 		},
 		{
-			title: "공모백과",
-			url: "/encyclopedia",
+			title: "대시보드 유형 3",
 			key: "sub3",
 			submenu: [
 				{
 					title: "option1",
-					url: "/url1"
 				},
 				{
 					title: "option2",
-					url: "/url2"
 				},
 				{
 					title: "option3",
-					url: "/url3"
 				},
 				{
 					title: "option4",
-					url: "/url4"
 				}
 			]
 		}
