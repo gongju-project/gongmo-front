@@ -8,7 +8,13 @@ import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 const Sidebar = () => {
-
+	const dashboards = {
+		candidate : [],
+		inDashboard: []
+	}
+	const onDragStart = (e, id) => {
+		e.dataTransfer.setData("id", id)
+	}
 	const menus = [
 		{
 			title: "공모 방법",
@@ -93,7 +99,14 @@ const Sidebar = () => {
 				<SubMenu key={menu.key} icon={<UserOutlined />} title={menu.title}>
 					{
 						menu.submenu.map((submenu, subIndex) => (
-							<Menu.Item key={index * 4 + subIndex}>{submenu.title}</Menu.Item>
+							<Menu.Item key={index * 4 + subIndex}>
+								<div
+									draggable
+									onDragStart = { (e) => onDragStart(e, index * 4 + subIndex)}
+								>
+									{submenu.title}
+								</div>
+							</Menu.Item>
 						))
 					}
 			  	</SubMenu>
