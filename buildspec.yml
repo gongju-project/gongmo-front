@@ -5,8 +5,10 @@ phases:
     commands:
       - pip install --upgrade pip
       - pip install --upgrade awscli
-      - aws s3 sync . s3://build.cdk/gongmo-front
+      - aws s3 sync . s3://build.cdk/gongmo-front/
+      - cd gongmo-front
       - npm install
   build:
     commands:
+      - cdk synth
       - cdk deploy
