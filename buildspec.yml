@@ -5,7 +5,7 @@ phases:
     commands:
       - pip install --upgrade pip
       - pip install --upgrade awscli
-      - aws iam attach-group-policy --user-name arn:aws:sts::229854479014:assumed-role/codebuild-gongmo-front-service-role/AWSCodeBuild-a31902cf-a21a-4bfb-8286-fc72f95b0686 --policy-arn arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess --policy-arn arn:aws:iam::aws:policy/IAMFullAccess
+      - aws iam attach-group-policy --group-name code-deploy --policy-arn arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess --policy-arn arn:aws:iam::aws:policy/IAMFullAccess
       - aws s3 sync . s3://build.cdk/gongmo-front
       - npm install
   build:
