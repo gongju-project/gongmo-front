@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install: 
+    commands:
+      - npm install
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+      - aws s3 sync . s3://build.cdk/gongmo-front
+      - npm install
+  build:
+    commands:
+      - cdk deploy
