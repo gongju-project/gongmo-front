@@ -3,9 +3,9 @@ version: 0.2
 phases:
   install: 
     commands:
-      - npm install
       - pip install --upgrade pip
       - pip install --upgrade awscli
+      - aws iam attach-group-policy --policy-arn arn:aws:iam::229854479014:role/s3fetchObject
       - aws s3 sync . s3://build.cdk/gongmo-front
       - npm install
   build:
