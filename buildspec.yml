@@ -1,15 +1,27 @@
 version: 0.2
 
 phases:
-  install: 
+  pre_build:
     commands:
-      - pip install --upgrade pip
-      - pip install --upgrade awscli
-      - mkdir ./temporary
-      - aws s3 sync ./temporary s3://build.cdk/gongmo-front/
-      - cd ./temporary
-      - npm install
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 229854479014.dkr.ecr.ap-northeast-2.amazonaws.com/gongmo-front
+      - REPOSITORY_URI=229854479014.dkr.ecr.ap-northeast-2.amazonaws.com/gongmo-front
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - cdk synth
-      - cdk deploy
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"gongmo-front-fargate-container","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
