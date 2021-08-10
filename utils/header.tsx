@@ -12,24 +12,14 @@ const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
 
 	const menus = [
 		{
-			title: "대시보드",
+			title: "홈",
 			url: "/",
 			key: 1
 		},
 		{
-			title: "데모 페이지",
-			url: "/main",
+			title: "공모백과",
+            url: "/encyclopedia",
 			key: 2
-		},
-		{
-			title: "마이 페이지",
-			url: "/myPage",
-			key: 3
-		},
-		{
-			title: "로그인",
-			url: "/signIn",
-			key: 4
 		}
 	]
 	return <>

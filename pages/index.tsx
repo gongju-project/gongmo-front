@@ -48,7 +48,6 @@ const Main = () => {
 <Layout>
 	<HeaderCustom currentMenuKey={1} ></HeaderCustom>
     <Layout>
-      <Sidebar></Sidebar>
       <Layout style={{ padding: '0 24px 24px' }}>
         <Content
           className="site-layout-background"
