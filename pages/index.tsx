@@ -44,40 +44,26 @@ const Main = () => {
 
 	}
 
-	return <>
-<Layout>
-	<HeaderCustom currentMenuKey={1} ></HeaderCustom>
-    <Layout>
-      <Layout style={{ padding: '0 24px 24px' }}>
-        <Content
-          className="site-layout-background"
-
-          style={{
-            
-          }}
-        >
-			<div
-				id = "content-dashboard"
-			style = {{ height: "100%"}}
-					  onDragOver={(e) => onDragOver(e)}
-					  onDrop={(e) => onDrop(e)}
-			>
-				{	
-					<Row>
-					{
-						usedBoards.map((board, index) => (
-							<Col span={board.span} key={index} style={{height:board.height, padding: "10px"}}>{board.element}</Col>
-						))
-					}
-					</Row>
-				}
-			</div>
-          
-        </Content>
-      </Layout>
-    </Layout>
-  </Layout>
-
+    return <>
+        <Layout>
+            <HeaderCustom currentMenuKey={1} ></HeaderCustom>
+            <Layout>
+                <Layout style={{ padding: '0 24px 24px' }}>
+                    <Content className="site-layout-background" style={{}}>
+                        <div id="content-dashboard" style={{ height: "100%", minHeight: 1024 }} onDragOver={(e) => onDragOver(e)} onDrop={(e) => onDrop(e)}>
+                            {
+                                <Row>
+                                    {
+                                        usedBoards.map((board, index) => (
+                                            <Col span={board.span} key={index} style={{ height: board.height, padding: "10px" }}>{board.element}</Col>))
+                                    }
+                                </Row>
+                            }
+                        </div>
+                    </Content>
+                </Layout>
+            </Layout>
+        </Layout>
 	</>
 }
 
