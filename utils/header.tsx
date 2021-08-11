@@ -5,26 +5,19 @@ const { Header, } = Layout
 import { Layout, Menu, Input, Space } from 'antd'
 import { BellOutlined, UserOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
+import { MainMenuModel } from "../model/MainMenuModel"
 
 interface HeaderInterface {
 	currentMenuKey: number
 }
 const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
 
-	const menus = [
-		{
-			title: "홈",
-			url: "/",
-			key: 1
-		},
-		{
-			title: "공모백과",
-            url: "/encyclopedia",
-			key: 2
-		}
-    ]
+	const menus: MainMenuModel[] = [ new MainMenuModel("홈", "/", 1), new MainMenuModel("공모백과", "/encyclopedia", 2) ]
+
     const { Search } = Input
-    const onSearch = value => console.log(value)
+    const onSearch = (value: string) => {
+        console.log(value)
+    }
     const iconMenu = [
         {
             url: "/",
@@ -36,13 +29,17 @@ const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
             key: 4,
             icon: UserOutlined
         },
-        ]
+    ]
+
+    const onClickHandler = () => {
+
+    }
 	return <>
 		<Head>
 			<title>Finwhale</title>
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
-        <Header >
+        <Header>
             <div className={styles.header} >
                 <div>
                     <a className={styles.headerLogo} href='/'><img src='/logo/logo.png' width='50' height='50'></img></a>
