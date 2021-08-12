@@ -5,7 +5,7 @@ const { Header } = Layout
 import { Layout, Menu, Input, Space } from 'antd'
 import { BellOutlined, UserOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
-import { MainMenuModel } from "../model/MainMenuModel"
+import { HeaderMenuModel } from "../model/MainModel"
 import { useRouter } from 'next/router'
 
 interface HeaderInterface {
@@ -13,7 +13,7 @@ interface HeaderInterface {
 }
 const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
 
-	const menus: MainMenuModel[] = [ new MainMenuModel("홈", "/", 1), new MainMenuModel("공모백과", "/encyclopedia", 2) ]
+    const menus: HeaderMenuModel[] = [new HeaderMenuModel("홈", "/", 1), new HeaderMenuModel("공모백과", "/encyclopedia", 2) ]
 
 	const router = useRouter()
     const { Search } = Input
@@ -25,12 +25,7 @@ const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
             url: "/",
             key: 3,
             icon: BellOutlined
-        },
-        {
-            url: "/myPage",
-            key: 4,
-            icon: UserOutlined
-        },
+        }
     ]
 
     const HeaderStyler = {
@@ -40,10 +35,13 @@ const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
     const onClickLogoHandler = () => {
 
     }
-	router.pathname	
+    
 	const onClickMenuHandler = (url: string) => {
 		router.push(url)
-	}
+    }
+    const onClickMyPageHandler = () => {
+        router.push("/signin")
+    }
 
 	// TODO 기본적으로 return 안쪽에는 변수가 들어가면 안되고 모든 값은 위에서 결정된 값이 들어가야 합니다
 	// TODO a 태그 안에 이미지 넣는거 안티패턴이라서 이미지 클릭 로고 방식 바꾸는거 추천드립니다
@@ -55,7 +53,6 @@ const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
         <Header style= {HeaderStyler}>
             <div className={styles.header} >
                 <div style= {{ marginRight: 'auto'}}>
-					
                 	<a className={styles.headerLogo} onClick={ () => onClickLogoHandler() }><img src='/logo/logo.png' width='50' height='50'></img></a>
                 </div>
 
@@ -76,6 +73,7 @@ const HeaderCustom = ({currentMenuKey}: HeaderInterface) => {
                                 ))
                             }
                         </Menu>
+                        <div className={styles.headerMyProfile} onClick={() => onClickMyPageHandler()} />
                     </div>
                 </nav>
             </div>

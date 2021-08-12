@@ -1,5 +1,5 @@
 
-export class MainMenuModel {
+export class HeaderMenuModel {
 	title: string
 	url: string
 	key: number

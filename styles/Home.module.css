@@ -171,22 +171,85 @@
 }
 
 .headerLogo {
-	margin: auto 0 auto 20px;
+	margin: auto 0 auto 120px;
+}
+
+.headerMyProfile {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #D3ECFF;
+    margin-right: 120px;
+    cursor: pointer;
+}
+
+.loginBtnKakao {
+    display: block;
+    margin: 10px;
+    width: 257px;
+    height: 54px;
+    line-height: 44px;
+    color: #783c00;
+    background-color: #FFEB00;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+/* Google */
+.loginBtnGoogle {
+    display: block;
+    margin: 10px;
+    width: 257px;
+    height: 54px;
+    line-height: 44px;
+    color: #783c00;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    background: #DD4B39;
+}
+
+.loginLogo {
+    display: flex;
+    height: 169px;
+    margin-bottom: 90px;
+    justify-content: center;
+}
+.signinLayout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 30px auto;
+    vertical-align: middle
 }
 
 #components-layout-demo-top-side-2 .logo {
-	float: left;
-	width: 120px;
-	height: 31px;
-	margin: 16px 24px 16px 0;
-	background: rgba(255, 255, 255, 0.3);
-  }
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
+}
   
   .ant-row-rtl #components-layout-demo-top-side-2 .logo {
 	float: right;
 	margin: 16px 0 16px 24px;
   }
-  
+
+
   .site-layout-background {
 	background: #f00;
   }
