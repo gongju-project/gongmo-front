@@ -14,6 +14,9 @@ const onGoogleClickLogInHandler = () => {
 const Main = () => {
 	return <>
 	<Layout>
+            <HeaderCustom
+                currentMenuKey = {3}
+            ></HeaderCustom>
             <Layout  style={{ padding: '0 24px 24px' }}>
                 <Content className={styles.signinLayout}>
                     <div>

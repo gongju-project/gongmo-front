@@ -6,6 +6,28 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background: #eff4f9!important;
 }
+.headerMenu .ant-menu-item-selected {
+	font-weight: bold!important;
+	color: black!important;
+	border: none!important;
+}
+
+.ant-menu-submenu {
+  color: black!important;
+  border: none!important;
+}
+
+.ant-layout-header .ant-input-search-button {
+  border: none!important;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: #f4f9fd;
+}
+
+.ant-menu-item {
+  border: none!important;
+  color: #ADB6BD!important;
+}
 
 .ant-layout {
   background: #00000000!important;
@@ -20,3 +42,13 @@ a {
   box-sizing: border-box;
 }
 
+@media screen and (max-width:768px) {
+
+  .ant-menu-item, .ant-menu-submenu {
+    margin: 0 14px!important;
+  }
+	.ant-menu-submenu-popup {
+    left: unset!important;
+		right: 12px!important;
+	}
+}
