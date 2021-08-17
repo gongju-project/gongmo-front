@@ -4,7 +4,7 @@ import HeaderCustom from '../../utils/header'
 import { Layout } from 'antd'
 import 'antd/dist/antd.css'
 import React from 'react'
-const { Content } = Layout;
+const { Content } = Layout
 
 
 const Main = () => {

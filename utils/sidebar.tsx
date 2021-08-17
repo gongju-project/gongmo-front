@@ -3,10 +3,10 @@ import React from "react"
 import styles from "../styles/Home.module.css"
 import { Layout, Menu } from 'antd'
 import 'antd/dist/antd.css'
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons'
 
-const { SubMenu } = Menu;
-const { Sider } = Layout;
+const { SubMenu } = Menu
+const { Sider } = Layout
 const Sidebar = () => {
 	const dashboards = {
 		candidate : [],

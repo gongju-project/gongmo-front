@@ -210,43 +210,31 @@
 }
 
 .loginBtnKakao {
-    display: block;
-    margin: 10px;
-    width: 257px;
-    height: 54px;
-    line-height: 44px;
-    color: #783c00;
-    background-color: #FFEB00;
-    border: 1px solid;
-    border-color: #000;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
+	background-image: url('/assets/images/buttons/kakao_login_btn.svg');
 }
-/* Google */
-.loginBtnGoogle {
-    display: block;
-    margin: 10px;
-    width: 257px;
-    height: 54px;
+
+.socialLoginBtn {
+	display: block;
+    margin: 1.2rem auto;
+    width: 292px;
+    height: 45px;
+	border: none;
     line-height: 44px;
-    color: #783c00;
-    border: 1px solid;
-    border-color: #000;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
     cursor: pointer;
-    background: #DD4B39;
+	text-align: center;
+}
+
+.loginBtnGoogle {
+	background-image: url('/assets/images/buttons/google_login_btn.svg');
 }
 
 .loginLogo {
-    display: flex;
+    display: block;
     height: 169px;
-    margin-bottom: 90px;
+	width: 183px;
+	margin: 120px auto 90px auto;
     justify-content: center;
 }
 .signinLayout {
