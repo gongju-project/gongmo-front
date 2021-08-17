@@ -1,9 +1,8 @@
 import styles from '../../styles/Home.module.css'
 import HeaderCustom from '../../utils/header'
-import { Layout } from 'antd'
+import { Col, Layout, Row } from 'antd'
 import 'antd/dist/antd.css'
 import * as React from 'react'
-const { Content } = Layout;
 
 const onKaKaoClickLogInHandler = () => {
 
@@ -17,20 +16,22 @@ const Main = () => {
             <HeaderCustom
                 currentMenuKey = {3}
             ></HeaderCustom>
-            <Layout  style={{ padding: '0 24px 24px' }}>
-                <Content className={styles.signinLayout}>
+            <Layout className={styles.signInContent}>
+                <Row>
+                    <Col span={8}>
+                    </Col>
+                    <Col span={8}>
+                    <img className={styles.loginLogo} src='/logo/logo.png' />
                     <div>
-                        <div>
-                            <a className={styles.loginLogo}><img src='/logo/logo.png' width='183px' /></a>
-                        </div>
-                        <div>
-                            <button className={styles.loginBtnKakao} onClick={() => onKaKaoClickLogInHandler()} >KaKao</button>
-                        </div>
-                        <div>
-                            <button className={styles.loginBtnGoogle} onClick={() => onGoogleClickLogInHandler()} >Google</button>
-                        </div>
+                        <button className={`${styles.loginBtnKakao} ${styles.socialLoginBtn}`} onClick={() => onKaKaoClickLogInHandler()} >카카오 로그인</button>
                     </div>
-			</Content>
+                    <div>
+                        <button className={`${styles.loginBtnGoogle} ${styles.socialLoginBtn}`} onClick={() => onGoogleClickLogInHandler()} >구글 로그인</button>
+                    </div>
+                    </Col>
+                    <Col span={8}>
+                    </Col>
+                </Row>
 		</Layout>
 	</Layout>
 

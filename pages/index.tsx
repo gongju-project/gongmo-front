@@ -8,7 +8,7 @@ import SampleSmall from '../boards/sampleBoardSmall'
 import React, { useState } from 'react'
 import SampleBig from '../boards/sampleBoardBig'
 import SampleLong from '../boards/sampleBoardLong'
-const { Content } = Layout;
+const { Content } = Layout
 
 
 const boards = [

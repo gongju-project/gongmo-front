@@ -1,5 +1,5 @@
 import { NextComponentType } from "next"
-import { AppContext, AppInitialProps, AppProps } from "next/app";
+import { AppContext, AppInitialProps, AppProps } from "next/app"
 import '../styles/globals.css'
 const Resume: NextComponentType<AppContext, AppInitialProps, AppProps> = ({ Component, pageProps }) => {
 	return <>
@@ -11,7 +11,7 @@ Resume.getInitialProps = async ({ Component, ctx }: AppContext): Promise<AppInit
 	let pageProps = {}
 
 	if (Component.getInitialProps) {
-		pageProps = await Component.getInitialProps(ctx);
+		pageProps = await Component.getInitialProps(ctx)
 	}
 
 	return { pageProps }
