@@ -15,6 +15,8 @@
 	align-items: center;
 }
 
+
+
 .contact {
 	width:20%;
 	height:40px;
@@ -157,7 +159,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-	min-width: 540px;
+	min-width: 634px;
     margin-left:auto;
     align-items: center;
     justify-content: space-between;
@@ -171,22 +173,107 @@
 }
 
 .headerLogo {
-	margin: auto 0 auto 20px;
+	margin: auto 0 auto 10px;
+	cursor: pointer;
+}
+
+.headerNav {
+	margin: 0 0 0 auto;
+}
+
+.headerMain {
+	padding: 0 24px!important;
+	background: #fff!important;
+}
+
+.headerMyProfile {
+    width: 40px;
+	min-width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #D3ECFF;
+	margin-left: 14px;
+    margin-right: 120px;
+    cursor: pointer;
+}
+
+.headerSearchbar {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	background-color: #f4f9fd;
+	width: 220px;
+	min-width:200px;
+	max-width: 230px;
+	margin: 0 14px;
+}
+
+.loginBtnKakao {
+    display: block;
+    margin: 10px;
+    width: 257px;
+    height: 54px;
+    line-height: 44px;
+    color: #783c00;
+    background-color: #FFEB00;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+/* Google */
+.loginBtnGoogle {
+    display: block;
+    margin: 10px;
+    width: 257px;
+    height: 54px;
+    line-height: 44px;
+    color: #783c00;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    background: #DD4B39;
+}
+
+.loginLogo {
+    display: flex;
+    height: 169px;
+    margin-bottom: 90px;
+    justify-content: center;
+}
+.signinLayout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 30px auto;
+    vertical-align: middle
 }
 
 #components-layout-demo-top-side-2 .logo {
-	float: left;
-	width: 120px;
-	height: 31px;
-	margin: 16px 24px 16px 0;
-	background: rgba(255, 255, 255, 0.3);
-  }
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
+}
   
   .ant-row-rtl #components-layout-demo-top-side-2 .logo {
 	float: right;
 	margin: 16px 0 16px 24px;
   }
-  
+
+
   .site-layout-background {
 	background: #f00;
   }
@@ -281,13 +368,27 @@
 /**
 * 큰 휴대폰 사이즈
 */
-@media screen and (min-width:768px) {
-  
+@media screen and (max-width:768px) {
+	.headerSearchbar {
+		display: none!important;
+	}
+	.headerMyProfile {
+		margin-right: 20px;
+	}
+	.headerContents {
+		min-width: inherit;
+	}
+	.headerLogo {
+		margin: auto 160px auto 10px;
+	}
+	.ant-menu-submenu-popup {
+		right: 12px!important;
+	}
 }
 
 /**
 * 휴대폰 사이즈
 */
-@media screen and (min-width:520px) {
+@media screen and (max-width:520px) {
   
 }

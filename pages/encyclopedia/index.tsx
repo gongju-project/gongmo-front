@@ -7,7 +7,7 @@ const { Content } = Layout
 const Main = () => {
 	return <>
 		<Layout>
-			<HeaderCustom currentMenuKey={3} ></HeaderCustom>
+			<HeaderCustom currentMenuKey={2} ></HeaderCustom>
 			<Layout style={{ padding: '0 24px 24px' }}>
 				<Content
 					className="site-layout-background"
