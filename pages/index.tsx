@@ -21,11 +21,15 @@ const Main = () => {
 	const onDragEndHandler = (e, dashboardId: string) => {
 		const selectedDashboard = dashboards.find((dashboard) => (dashboard.dashboardId === dashboardId))
 		const dashboardFiltered = dashboards.filter((elem) => (elem.dashboardId !== selectedDashboard.dashboardId))
-		dashboards.some(( dashboard, index) => {
+		dashboardFiltered.some(( dashboard, index) => {
 			const id = dashboard.dashboardId
 			const board = document.getElementById(id)
 			const rect = board.getBoundingClientRect()
-			if (e.clientX >= rect.x && e.clientY <= rect.y + rect.width && e.clientY >= rect.y) {
+			console.log('왼쪽x:' + rect.x + ', 오른쪽x:' + (rect.x + rect.width))
+			console.log('위y:' + rect.y + ', 아래y:' + (rect.y + rect.height))
+			console.log('드래그x:'+e.clientX + ', 드래그y:' + e.clientY)
+			
+			if (e.clientX >= rect.x && e.clientX <= rect.x + rect.width / 2 &&  e.clientY <= rect.y + rect.height && e.clientY >= rect.y) {
 				// 이전에 push
 				const newDashboards = dashboardFiltered.reduce((acc, cur, idx) => {
 					if (idx === index){
@@ -38,13 +42,16 @@ const Main = () => {
 					setDashboards(newDashboards)
 				}
 				return newDashboards.length === dashboards.length
-			} else if (e.clientX <= rect.x + rect.height && e.clientY <= rect.y + rect.width && e.clientY >= rect.y) {
+			} else if (e.clientX >= rect.x && e.clientX >= rect.x + rect.width / 2 &&  e.clientY <= rect.y + rect.height && e.clientY >= rect.y) {
 				// 이후에 push
 				const newDashboards = dashboardFiltered.reduce((acc, cur, idx) => {
 					if (idx === index + 1){
 						acc.push(selectedDashboard)
 					}
 					acc.push(cur)
+					if (idx === dashboardFiltered.length - 1 && index + 1 === dashboardFiltered.length) {
+						acc.push(selectedDashboard)
+					}
 					return acc
 				}, [])
 				if (newDashboards.length === dashboards.length) {
