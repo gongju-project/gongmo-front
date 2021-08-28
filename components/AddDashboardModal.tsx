@@ -1,7 +1,7 @@
 import { Modal, List } from 'antd'
 import { useRef, useState } from 'react'
-import { DashboardsSettings} from '../pages/index'
 import {v4} from 'uuid'
+import { DashboardsSettings } from './Dashboards'
 
 interface AddDashboardModalInterface {
 	visible: boolean

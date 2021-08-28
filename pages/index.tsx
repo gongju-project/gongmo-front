@@ -4,14 +4,7 @@ import 'antd/dist/antd.css'
 import React, { useState } from 'react'
 import AddDashboardModal from '../components/AddDashboardModal'
 import MainSettingsModal from '../components/MainSettingsModal'
-import Dashboards from '../components/Dashboards'
-
-export interface DashboardsSettings {
-	size: number
-	dashboardId: string
-	aid: string
-	settings: any
-}
+import Dashboards, { DashboardsSettings } from '../components/Dashboards'
 
 const Main = () => {
 	const [dashboardVisible, setDashboardVisible] = useState(false)
@@ -25,8 +18,29 @@ const Main = () => {
 		setSettingsVisible(true)
 	}
 
-	const onDragEndHandler = (e, id: string) => {
-
+	const onDragEndHandler = (e, dashboardId: string) => {
+		const selectedDashboard = dashboards.find((dashboard) => (dashboard.dashboardId === dashboardId))
+		const newDashboards = dashboards
+		const workingDashboards = dashboards.map(( dashboard, index) => {
+			const id = dashboard.dashboardId
+			const board = document.getElementById(id)
+			const rect = board.getBoundingClientRect()
+			console.log(rect)
+			const y = - (rect.height / rect.width) * (e.clientX - rect.x) + rect.y
+			const deleteExistingDashboardIndex = newDashboards.findIndex((dashboard) => (dashboard.dashboardId === selectedDashboard.dashboardId))
+			if (e.clientX >= rect.x && y <= e.clientY && e.clientY >= rect.y) {
+				// 이전에 push
+				newDashboards.splice(deleteExistingDashboardIndex, 1)
+				newDashboards.splice(index, 0, selectedDashboard)
+			} else if ( y >= e.clientY && e.clientX <= rect.x + rect.height && e.clientY <= rect.y + rect.width) {
+				// 이후에 push
+				newDashboards.splice(deleteExistingDashboardIndex, 1)
+				newDashboards.splice(index + 1, 0, selectedDashboard)
+			}
+			return dashboard
+		})
+		console.log(newDashboards)
+		setDashboards(newDashboards)
 	}
 
 	return <>
