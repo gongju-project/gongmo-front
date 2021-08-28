@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.css'
-import HeaderCustom from '../../utils/header'
+import HeaderCustom from '../../components/Header'
 import { Col, Layout, Row } from 'antd'
 import 'antd/dist/antd.css'
 import * as React from 'react'
@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 const Main = () => {
     const router = useRouter()
     const onKaKaoClickLogInHandler = () => {
+        console.log(process.env.GONGMO_API_HOST)
         router.push(process.env.GONGMO_API_HOST + '/kakaoOAuth/login')
     }
     const onGoogleClickLogInHandler = () => {

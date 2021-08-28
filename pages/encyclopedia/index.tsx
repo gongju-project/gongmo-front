@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import HeaderCustom from '../../utils/header'
+import HeaderCustom from '../../components/Header'
 import { Layout } from 'antd'
 import 'antd/dist/antd.css'
 import React from 'react'

@@ -1,69 +1,42 @@
-import styles from '../styles/Home.module.css'
-
-import HeaderCustom from '../utils/header'
-import Sidebar from '../utils/sidebar'
-import { Col, Layout, Row } from 'antd'
+import HeaderCustom from '../components/Header'
+import { Button, Col, Layout, Row } from 'antd'
 import 'antd/dist/antd.css'
-import SampleSmall from '../boards/sampleBoardSmall'
 import React, { useState } from 'react'
-import SampleBig from '../boards/sampleBoardBig'
-import SampleLong from '../boards/sampleBoardLong'
-const { Content } = Layout
+import AddDashboardModal from '../components/AddDashboardModal'
+import MainSettingsModal from '../components/MainSettingsModal'
 
-
-const boards = [
-	{
-		element: <SampleSmall></SampleSmall>,
-		span: 12,
-		height: 400
-	},
-	{
-		element: <SampleBig></SampleBig>,
-		span: 24,
-		height: 400
-	},
-	{
-		element: <SampleLong></SampleLong>,
-		span: 24,
-		height: 200
-	}
-]
 
 const Main = () => {
-	const [usedBoards, setUsedBoards] = useState([])
-	const [usedBoardsRect, setUsedBoardsRect] = useState([])
-	const onDragOver = (e) => {
-		e.preventDefault()
-	}
-	const onDrop = (e) => {
-		const id = e.dataTransfer.getData("id")
-		const clientRect = document.getElementById("content-dashboard").getBoundingClientRect()
-		setUsedBoards([...usedBoards, boards[id]])
-		console.log(usedBoards)
-		console.log(`clientX:${e.clientX}, clientY:${e.clientY}`)
-
+	const [dashboardVisible, setDashboardVisible] = useState(false)
+	const [settingsVisible, setSettingsVisible] = useState(false)
+	const onClickPlusHandler = () => {
+		setDashboardVisible(true)
 	}
 
-    return <>
-        <Layout>
-            <HeaderCustom currentMenuKey={1} ></HeaderCustom>
-            <Layout>
-                <Layout style={{ padding: '0 24px 24px' }}>
-                    <Content className="site-layout-background" style={{}}>
-                        <div id="content-dashboard" style={{ height: "100%", minHeight: 1024 }} onDragOver={(e) => onDragOver(e)} onDrop={(e) => onDrop(e)}>
-                            {
-                                <Row>
-                                    {
-                                        usedBoards.map((board, index) => (
-                                            <Col span={board.span} key={index} style={{ height: board.height, padding: "10px" }}>{board.element}</Col>))
-                                    }
-                                </Row>
-                            }
-                        </div>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+	const onClickSettingsHandler = () => {
+		setSettingsVisible(true)
+	}
+
+	return <>
+		<Layout>
+			<AddDashboardModal
+				visible={dashboardVisible}
+				setVisible={setDashboardVisible}
+			></AddDashboardModal>
+			<MainSettingsModal
+				visible={settingsVisible}
+				setVisible={setSettingsVisible}
+			></MainSettingsModal>
+			<HeaderCustom currentMenuKey={1} ></HeaderCustom>
+			<Row style={{ marginTop: '1.5rem' }}>
+				<Col span={4}></Col>
+				<Col span={16} style={{ textAlign: 'right' }}>
+					<Button onClick={() => onClickPlusHandler()} type="link" shape="circle" icon={<img src='/assets/images/buttons/plus.svg' />} size='large' />
+					<Button onClick={() => onClickSettingsHandler()} type="link" shape="circle" icon={<img src='/assets/images/buttons/settings.svg' />} size='large' />
+				</Col>
+				<Col span={4}></Col>
+			</Row>
+		</Layout>
 	</>
 }
 

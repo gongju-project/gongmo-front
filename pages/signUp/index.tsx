@@ -1,6 +1,6 @@
-import HeaderCustom from '../../utils/header'
+import HeaderCustom from '../../components/Header'
 import styles from '../../styles/Home.module.css'
-import Footer from '../../utils/footer'
+import Footer from '../../components/Footer'
 
 const SignUp = () => {
 	return (
