@@ -7,7 +7,7 @@ import { BellOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import { HeaderMenuModel } from "../model/MainModel"
 import { useRouter } from 'next/router'
-import SearchCustom from "./SearchCustom"
+import SearchCustom from "./searchCustom"
 
 interface HeaderInterface {
 	currentMenuKey: number
@@ -46,41 +46,40 @@ const HeaderCustom = ({ currentMenuKey }: HeaderInterface) => {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<Header className={styles.headerMain}>
-
 			<Row>
-				<Col span={3}></Col>
-				<Col span={17}><div className={styles.header} >
-					<div>
-						<img className={styles.headerLogo} onClick={() => onClickLogoHandler()} src='/logo/logo.png' width='50' height='50'></img>
-					</div>
-					<div className={styles.headerNav}>
-						<div className={styles.headerContents}>
-							<Menu className='headerMenu' mode="horizontal" defaultSelectedKeys={[currentMenuKey.toString()]}>
-								{
-									menus.map((menu) => (
-										<Menu.Item key={menu.key} onClick={() => onClickMenuHandler(menu.url)}>{menu.title}</Menu.Item>
-									))
-								}
-							</Menu>
-							<SearchCustom
-								searchString={searchString}
-								searchbarStyle={styles.headerSearchbar}
-							/>
-							<Menu mode="horizontal" >
-								{
-									iconMenu.map((menu) => (
-										<Menu.Item key={menu.key} onClick={() => location.href = menu.url} icon={<menu.icon />}></Menu.Item>
-									))
-								}
-							</Menu>
-							<div className={styles.headerMyProfile} onClick={() => onClickMyPageHandler()} />
+				<Col span={4}></Col>
+				<Col span={16}>
+					<div className={styles.header} >
+						<div style={{ marginRight: 'auto' }}>
+							<img className={styles.headerLogo} onClick={() => onClickLogoHandler()} src='/logo/logo.png' width='50' height='50'></img>
 						</div>
+						<nav className={styles.headerNav}>
+							<div className={styles.headerContents}>
+								<Menu className='headerMenu' mode="horizontal" defaultSelectedKeys={[currentMenuKey.toString()]}>
+									{
+										menus.map((menu) => (
+											<Menu.Item key={menu.key} onClick={() => onClickMenuHandler(menu.url)}>{menu.title}</Menu.Item>
+										))
+									}
+								</Menu>
+								<SearchCustom
+									searchString={searchString}
+									searchbarStyle={styles.headerSearchbar}
+								/>
+								<Menu mode="horizontal" >
+									{
+										iconMenu.map((menu) => (
+											<Menu.Item key={menu.key} onClick={() => location.href = menu.url} icon={<menu.icon />}></Menu.Item>
+										))
+									}
+								</Menu>
+								<div className={styles.headerMyProfile} onClick={() => onClickMyPageHandler()} />
+							</div>
+						</nav>
 					</div>
-				</div>
 				</Col>
+				<Col span={5}></Col>
 			</Row>
-
-
 		</Header>
 	</>
 }
