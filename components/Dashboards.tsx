@@ -8,6 +8,9 @@ import LCalendar from '../components/calendar/LCalendar'
 import MCalendar from '../components/calendar/MCalendar'
 import SCalendar from '../components/calendar/SCalendar'
 import { v4 } from 'uuid'
+import LRevenue from './revenue/LRevenue'
+import MRevenue from './revenue/MRevenue'
+import SRevenue from './revenue/SRevenue'
 
 export interface DashboardsSettings {
 	size: number
@@ -39,6 +42,21 @@ const Dashboards = ({dashboards, onDragEndHandler}:DashboardsInterface) => {
 					onDragEndHandler={onDragEndHandler}
 					dashboardId={dashboard.dashboardId}
 				></SCalendar>
+			} else if (dashboard.aid === 'revenue' && dashboard.size === dashboardSize.MIDDLE) {
+				var dashboardElem = <LRevenue
+					onDragEndHandler={onDragEndHandler}
+					dashboardId={dashboard.dashboardId}
+				></LRevenue>
+			} else if (dashboard.aid === 'revenue' && dashboard.size === dashboardSize.SMALL) {
+				var dashboardElem = <MRevenue
+					onDragEndHandler={onDragEndHandler}
+					dashboardId={dashboard.dashboardId}
+				></MRevenue>
+			} else if (dashboard.aid === 'revenue' && dashboard.size === dashboardSize.SMALL) {
+				var dashboardElem = <SRevenue
+					onDragEndHandler={onDragEndHandler}
+					dashboardId={dashboard.dashboardId}
+				></SRevenue>
 			}
 			return (<Col key={`dashboards${v4()}`} className={styles.dashboardCommon} span={dashboard.size}>
 				{dashboardElem}

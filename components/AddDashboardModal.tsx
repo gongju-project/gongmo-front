@@ -33,8 +33,8 @@ const AddDashboardModal = ({visible, setVisible, dashboards, setDashboards}: Add
 			aid: 'calendar'
 		},
 		{
-			title: '계산기',
-			aid: 'calculator'
+			title: '최근 수익률',
+			aid: 'revenue'
 		}
 	]
 
