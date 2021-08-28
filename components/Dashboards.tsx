@@ -11,8 +11,8 @@ import { v4 } from 'uuid'
 import LRevenue from './revenue/LRevenue'
 import MRevenue from './revenue/MRevenue'
 import SRevenue from './revenue/SRevenue'
-import LRealtime from './realtime/Lrealtime'
-import MRealtime from './realtime/Mrealtime'
+import LRealtime from './realtime/LRealtime'
+import MRealtime from './realtime/MRealtime'
 import SRealtime from './realtime/SRealtime'
 
 export interface DashboardsSettings {
