@@ -8,3 +8,10 @@
 .boardCol {
 	margin: 10px;
 }
+
+.dashboardCommon {
+	background-color: white;
+	background-clip: content-box;
+	height: 20rem;
+	padding: 1rem;
+}

@@ -1,26 +1,36 @@
 import { Modal, List } from 'antd'
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react'
+import { DashboardsSettings} from '../pages/index'
+import {v4} from 'uuid'
 
 interface AddDashboardModalInterface {
 	visible: boolean
 	setVisible: (visible: boolean) => void
+	dashboards: DashboardsSettings[]
+	setDashboards: (dashboards: DashboardsSettings[]) => void
 }
 
 interface DashboardListStyle {
 	display: string
 }
-const AddDashboardModal = ({visible, setVisible}: AddDashboardModalInterface) => {
+
+export enum dashboardSize {
+	LARGE= 21,
+	MIDDLE=14,
+	SMALL=7
+}
+const AddDashboardModal = ({visible, setVisible, dashboards, setDashboards}: AddDashboardModalInterface) => {
 	const [confirmLoading, setConfirmLoading] = useState<boolean>(false)
 	const [listStyle, setListStyle]= useState<DashboardListStyle>({ display: 'initial' })
 	const [dashboardSelectStyle, setDashboardSelectStyle]= useState<DashboardListStyle>({ display: 'none' })
-	const [selectedAid, setSelectedAid] = useState<string>('')
+	const [selectedAid, setSelectedAid] = useState<string>('calendar')
 	const listRef = useRef(null)
 	const contentRef = useRef(null)
 
-	const dashboards = [
+	const dashboardsData = [
 		{
 			title: '캘린더',
-			aid: 'calander'
+			aid: 'calendar'
 		},
 		{
 			title: '계산기',
@@ -30,32 +40,50 @@ const AddDashboardModal = ({visible, setVisible}: AddDashboardModalInterface) =>
 
 	const sizes = [
 		{
-			title: '대형'
+			title: '대형',
+			size: dashboardSize.LARGE
 		},
 		{
-			title: '중형'
+			title: '중형',
+			size: dashboardSize.MIDDLE
 		},
 		{
-			title: '소형'
+			title: '소형',
+			size: dashboardSize.SMALL
 		},
 	]
 	const handleOk = () => {
 		setConfirmLoading(true);
 		setVisible(false);
 		setConfirmLoading(false);
+		setListStyle({display: 'initial' })
+		setDashboardSelectStyle({display: 'none' })
 	};
 
 	const handleCancel = () => {
+		setListStyle({display: 'initial' })
+		setDashboardSelectStyle({display: 'none' })
 		setVisible(false)
 	};
 	const onClickDashboardTypesHandler = (aid: string) => {
-		setListStyle({display: 'none'})
-		setDashboardSelectStyle({display: 'initial'})
+		setListStyle({display: 'none' })
+		setDashboardSelectStyle({display: 'initial' })
 		setSelectedAid(aid)
 	}
 
-	const onClickSelectDashboardHandler = () => {
-
+	const onClickSelectDashboardHandler = (size: number) => {
+		const dashboardSettings: DashboardsSettings = {
+			size: size,
+			aid: selectedAid,
+			settings: {},
+			dashboardId: v4()
+		}
+		const newDashboardsSettings = [ ...dashboards, dashboardSettings ]
+		setDashboards(newDashboardsSettings)
+		setListStyle({display: 'initial' })
+		setDashboardSelectStyle({display: 'none' })
+		setVisible(false);
+		setConfirmLoading(false);
 	}
 
 	return (
@@ -70,7 +98,7 @@ const AddDashboardModal = ({visible, setVisible}: AddDashboardModalInterface) =>
 				<div style={listStyle} ref={listRef}>
 					<List
 						itemLayout="horizontal"
-						dataSource={dashboards}
+						dataSource={dashboardsData}
 						renderItem={item => (
 							<List.Item
 								style={{cursor:'pointer'}}
@@ -85,17 +113,19 @@ const AddDashboardModal = ({visible, setVisible}: AddDashboardModalInterface) =>
 					</List>
 				</div>
 				<div style={dashboardSelectStyle} ref={contentRef}>
-
+					{
+						<p>{dashboardsData.find((elem) => (elem.aid === selectedAid)).title}를 선택해주세요</p>
+					}
 					<List
 						itemLayout="horizontal"
 						dataSource={sizes}
 						renderItem={item => (
 							<List.Item
 							style={{cursor:'pointer'}}
-								onClick={() => onClickSelectDashboardHandler()}
+								onClick={() => onClickSelectDashboardHandler(item.size)}
 							>
 							<List.Item.Meta
-								title={<a href="/">{item.title}</a>}
+								title={<a href="/">{item.title}사이즈</a>}
 							/>
 						</List.Item>
 						)}
