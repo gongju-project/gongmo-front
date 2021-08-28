@@ -11,6 +11,9 @@ import { v4 } from 'uuid'
 import LRevenue from './revenue/LRevenue'
 import MRevenue from './revenue/MRevenue'
 import SRevenue from './revenue/SRevenue'
+import LRealtime from './realtime/Lrealtime'
+import MRealtime from './realtime/Mrealtime'
+import SRealtime from './realtime/SRealtime'
 
 export interface DashboardsSettings {
 	size: number
@@ -57,6 +60,21 @@ const Dashboards = ({dashboards, onDragEndHandler}:DashboardsInterface) => {
 					onDragEndHandler={onDragEndHandler}
 					dashboardId={dashboard.dashboardId}
 				></SRevenue>
+			}else if (dashboard.aid === 'realtime' && dashboard.size === dashboardSize.LARGE) {
+				var dashboardElem = <LRealtime
+					onDragEndHandler={onDragEndHandler}
+					dashboardId={dashboard.dashboardId}
+				></LRealtime>
+			} else if (dashboard.aid === 'realtime' && dashboard.size === dashboardSize.MIDDLE) {
+				var dashboardElem = <MRealtime
+					onDragEndHandler={onDragEndHandler}
+					dashboardId={dashboard.dashboardId}
+				></MRealtime>
+			} else if (dashboard.aid === 'realtime' && dashboard.size === dashboardSize.SMALL) {
+				var dashboardElem = <SRealtime
+					onDragEndHandler={onDragEndHandler}
+					dashboardId={dashboard.dashboardId}
+				></SRealtime>
 			}
 			return (<Col key={`dashboards${v4()}`} className={styles.dashboardCommon} span={dashboard.size}>
 				{dashboardElem}

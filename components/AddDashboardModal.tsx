@@ -35,6 +35,10 @@ const AddDashboardModal = ({visible, setVisible, dashboards, setDashboards}: Add
 		{
 			title: '최근 수익률',
 			aid: 'revenue'
+		},
+		{
+			title: '실시간',
+			aid: 'realtime'
 		}
 	]
 
