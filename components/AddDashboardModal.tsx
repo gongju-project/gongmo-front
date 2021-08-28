@@ -1,5 +1,5 @@
-import { Modal, List } from 'antd'
-import { useRef, useState } from 'react'
+import { Modal, List, Button } from 'antd'
+import React, { useRef, useState } from 'react'
 import {v4} from 'uuid'
 import { DashboardsSettings } from './Dashboards'
 
@@ -53,9 +53,9 @@ const AddDashboardModal = ({visible, setVisible, dashboards, setDashboards}: Add
 		},
 	]
 	const handleOk = () => {
-		setConfirmLoading(true);
-		setVisible(false);
-		setConfirmLoading(false);
+		setConfirmLoading(true)
+		setVisible(false)
+		setConfirmLoading(false)
 		setListStyle({display: 'initial' })
 		setDashboardSelectStyle({display: 'none' })
 	};
@@ -121,8 +121,9 @@ const AddDashboardModal = ({visible, setVisible, dashboards, setDashboards}: Add
 						dataSource={sizes}
 						renderItem={item => (
 							<List.Item
-							style={{cursor:'pointer'}}
-								onClick={() => onClickSelectDashboardHandler(item.size)}
+							actions={
+								[<Button type="default" size="large" onClick={() => onClickSelectDashboardHandler(item.size)}>적용</Button>]
+							}
 							>
 							<List.Item.Meta
 								title={<a href="/">{item.title}사이즈</a>}

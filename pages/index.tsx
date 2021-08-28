@@ -20,27 +20,39 @@ const Main = () => {
 
 	const onDragEndHandler = (e, dashboardId: string) => {
 		const selectedDashboard = dashboards.find((dashboard) => (dashboard.dashboardId === dashboardId))
-		const newDashboards = dashboards
-		const workingDashboards = dashboards.map(( dashboard, index) => {
+		const dashboardFiltered = dashboards.filter((elem) => (elem.dashboardId !== selectedDashboard.dashboardId))
+		dashboards.some(( dashboard, index) => {
 			const id = dashboard.dashboardId
 			const board = document.getElementById(id)
 			const rect = board.getBoundingClientRect()
-			console.log(rect)
-			const y = - (rect.height / rect.width) * (e.clientX - rect.x) + rect.y
-			const deleteExistingDashboardIndex = newDashboards.findIndex((dashboard) => (dashboard.dashboardId === selectedDashboard.dashboardId))
-			if (e.clientX >= rect.x && y <= e.clientY && e.clientY >= rect.y) {
+			if (e.clientX >= rect.x && e.clientY <= rect.y + rect.width && e.clientY >= rect.y) {
 				// 이전에 push
-				newDashboards.splice(deleteExistingDashboardIndex, 1)
-				newDashboards.splice(index, 0, selectedDashboard)
-			} else if ( y >= e.clientY && e.clientX <= rect.x + rect.height && e.clientY <= rect.y + rect.width) {
+				const newDashboards = dashboardFiltered.reduce((acc, cur, idx) => {
+					if (idx === index){
+						acc.push(selectedDashboard)
+					}
+					acc.push(cur)
+					return acc
+				}, [])
+				if (newDashboards.length === dashboards.length) {
+					setDashboards(newDashboards)
+				}
+				return newDashboards.length === dashboards.length
+			} else if (e.clientX <= rect.x + rect.height && e.clientY <= rect.y + rect.width && e.clientY >= rect.y) {
 				// 이후에 push
-				newDashboards.splice(deleteExistingDashboardIndex, 1)
-				newDashboards.splice(index + 1, 0, selectedDashboard)
+				const newDashboards = dashboardFiltered.reduce((acc, cur, idx) => {
+					if (idx === index + 1){
+						acc.push(selectedDashboard)
+					}
+					acc.push(cur)
+					return acc
+				}, [])
+				if (newDashboards.length === dashboards.length) {
+					setDashboards(newDashboards)
+				}
+				return newDashboards.length === dashboards.length
 			}
-			return dashboard
 		})
-		console.log(newDashboards)
-		setDashboards(newDashboards)
 	}
 
 	return <>

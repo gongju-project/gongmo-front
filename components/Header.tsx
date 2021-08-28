@@ -7,7 +7,7 @@ import { BellOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import { HeaderMenuModel } from "../model/MainModel"
 import { useRouter } from 'next/router'
-import SearchCustom from "./searchCustom"
+import SearchCustom from "./SearchCustom"
 
 interface HeaderInterface {
 	currentMenuKey: number

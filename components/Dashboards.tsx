@@ -7,6 +7,7 @@ import { dashboardSize } from '../components/AddDashboardModal'
 import LCalendar from '../components/calendar/LCalendar'
 import MCalendar from '../components/calendar/MCalendar'
 import SCalendar from '../components/calendar/SCalendar'
+import { v4 } from 'uuid'
 
 export interface DashboardsSettings {
 	size: number
@@ -39,7 +40,7 @@ const Dashboards = ({dashboards, onDragEndHandler}:DashboardsInterface) => {
 					dashboardId={dashboard.dashboardId}
 				></SCalendar>
 			}
-			return (<Col className={styles.dashboardCommon} span={dashboard.size}>
+			return (<Col key={`dashboards${v4()}`} className={styles.dashboardCommon} span={dashboard.size}>
 				{dashboardElem}
 			</Col>)
 		})

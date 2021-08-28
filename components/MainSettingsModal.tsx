@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const MainSettingsModal = ({visible, setVisible}) => {
 	const [confirmLoading, setConfirmLoading] = useState(false);
-	const [modalText, setModalText] = useState('Cㅆ');
+	const [modalText, setModalText] = useState('세팅모달');
 
 
 	const handleOk = () => {
