@@ -1,23 +1,22 @@
 import HeaderCustom from '../../components/Header'
-import { Layout } from 'antd'
+import NewsBoard from '../../components/encyclopedia/NewsBoard'
+import InitialPublicOfferingInfo from '../../components/encyclopedia/InitialPublicOfferingInfo'
+import CompanyInfo from '../../components/encyclopedia/CompanyInfo'
+import styles from '../../styles/Home.module.css'
+import { Button, Card, Col, Layout, Row, Descriptions, Table, Space} from 'antd'
 import 'antd/dist/antd.css'
-import React from 'react'
-const { Content } = Layout
+const { Column } = Table;
+
+
 const Main = () => {
 	return <>
 		<Layout>
-			<HeaderCustom currentMenuKey={2} ></HeaderCustom>
-			<Layout style={{ padding: '0 24px 24px' }}>
-				<Content
-					className="site-layout-background"
-					style={{
-						padding: 24,
-						margin: 0,
-						minHeight: 280,
-					}}
-				>
-				</Content>
-			</Layout>
+            <HeaderCustom currentMenuKey={2} ></HeaderCustom>
+            <Layout className={styles.encyclopediaLayout}>
+                <InitialPublicOfferingInfo />
+                <CompanyInfo />
+                <NewsBoard />
+            </Layout>
 		</Layout>
 	</>
 }
